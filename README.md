@@ -1,0 +1,1 @@
+# GLS Shop Finder Service
