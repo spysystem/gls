@@ -2,8 +2,30 @@
 
 namespace GLS;
 
+/**
+ * Class WsShopFinder
+ *
+ * @package GLS
+ */
 class WsShopFinder extends \SoapClient
 {
+	const	WSDLUrl			= 'http://www.gls.dk/webservices_v4/wsShopFinder.asmx?WSDL';
+	const   API_SoapOptions	= [
+				'trace'        => true,
+				'exceptions'   => true,
+				'soap_version' => SOAP_1_2,
+				'encoding'     => 'UTF-8'
+			];
+
+	/**
+	 * @return static
+	 */
+	public static function Create()
+	{
+		$oService	= new static(static::API_SoapOptions, static::WSDLUrl);
+
+		return $oService;
+	}
 
     /**
      * @var array $classmap The defined classes
@@ -29,10 +51,12 @@ class WsShopFinder extends \SoapClient
       'GetParcelShopDropPointResponse' => 'GLS\\GetParcelShopDropPointResponse',
     ];
 
-    /**
-     * @param array $options A array of config values
-     * @param string $wsdl The wsdl file to use
-     */
+	/**
+	 * @param array  $options A array of config values
+	 * @param string $wsdl    The wsdl file to use
+	 *
+	 * @throws \Exception
+	 */
     public function __construct(array $options = [], $wsdl = null)
     {
       foreach (self::$classmap as $key => $value) {
@@ -44,7 +68,7 @@ class WsShopFinder extends \SoapClient
       'features' => 1,
     ], $options);
       if (!$wsdl) {
-        $wsdl = 'gls.wsdl';
+		  throw new \Exception('Missing WSDL!');
       }
       parent::__construct($wsdl, $options);
     }
