@@ -1,5 +1,5 @@
 {
-	"name": "spysystem/twenty-four-seven",
+	"name": "spysystem/gls",
 	"description": "PHP library for GLS Shop Finder Web Services",
 	"license": "proprietary",
 	"require": {
