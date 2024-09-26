@@ -3,11 +3,11 @@
 	"description": "PHP library for GLS Shop Finder Web Services",
 	"license": "proprietary",
 	"require": {
-		"php": ">=5.6.0"
+		"php": "5.6 - 8.1"
 	},
 	"autoload": {
 		"psr-4": {
-            "GLS\\": "src"
+			"GLS\\": "src"
 		}
 	}
 }
